@@ -1,0 +1,22 @@
+{
+  "name": "Spam Email Extension",
+  "description": "Scrape emails from any web page",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "permissions": ["activeTab", "scripting", "notifications", "storage"],
+  "host_permissions": ["<all_urls>"],
+  "externally_connectable": {
+    "matches": [
+      "http://localhost:8080/*",
+      "http://127.0.0.1:8080/*",
+      "http://[::1]:8080/*"
+    ]
+  }
+}

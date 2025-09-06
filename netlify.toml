@@ -1,0 +1,68 @@
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# OAuth redirect handling
+[[redirects]]
+  from = "/auth/google/login"
+  to = "/.netlify/functions/auth-google-login"
+  status = 200
+
+[[redirects]]
+  from = "/auth/google/callback"
+  to = "/.netlify/functions/auth-google-callback"
+  status = 200
+
+[[redirects]]
+  from = "/auth/apple/login"
+  to = "/.netlify/functions/auth-apple-login"
+  status = 200
+
+[[redirects]]
+  from = "/auth/apple/callback"
+  to = "/.netlify/functions/auth-apple-callback"
+  status = 200
+
+# API routes
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api"
+  status = 200
+
+# SPA fallback
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Security headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# OAuth endpoints security
+[[headers]]
+  for = "/auth/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Cache-Control = "no-store, no-cache, must-revalidate, proxy-revalidate"
+
+# Function settings
+[functions]
+  node_bundler = "esbuild"
+
+# Development settings
+[dev]
+  command = "npm run dev"
+  port = 3000
+  targetPort = 5173
+  publish = "dist"

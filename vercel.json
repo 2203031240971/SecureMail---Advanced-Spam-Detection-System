@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "builds": [
+    {
+      "src": "dist/server/node-build.mjs",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "dist/spa/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "dist/server/node-build.mjs"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "dist/spa/index.html"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
+}

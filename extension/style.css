@@ -1,0 +1,213 @@
+:root {
+  --primary-color: #ff4444;
+  --primary-dark: #cc0000;
+  --background: #121212;
+  --card-bg: #1e1e1e;
+  --text-color: #e0e0e0;
+  --text-secondary: #b0b0b0;
+  --border-color: #333333;
+  --success-color: #4caf50;
+  --error-color: #f44336;
+  --warning-color: #ffc107;
+  --hover-bg: #2a2a2a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: var(--background);
+  color: var(--text-color);
+  min-width: 320px;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--card-bg);
+}
+
+.logo {
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+  filter: invert(1) brightness(0.8);
+}
+
+.header h1 {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.content {
+  padding: 16px;
+  flex-grow: 1;
+  background-color: var(--background);
+}
+
+.description {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.scrape-button {
+  width: 100%;
+  padding: 10px 16px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.scrape-button:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.scrape-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+.button-icon {
+  margin-left: 8px;
+  font-weight: bold;
+}
+
+.results-container {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--card-bg);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.results-count {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.copy-button {
+  background: none;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.copy-button:hover {
+  background-color: rgba(255, 68, 68, 0.1);
+}
+
+.copy-button:disabled {
+  color: #555555;
+  border-color: #555555;
+  cursor: not-allowed;
+  background: none;
+}
+
+.emails-list {
+  list-style: none;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.emails-list li {
+  padding: 8px 12px;
+  font-size: 13px;
+  border-bottom: 1px solid var(--border-color);
+  word-break: break-all;
+  transition: background-color 0.2s;
+}
+
+.emails-list li:hover {
+  background-color: var(--hover-bg);
+}
+
+.emails-list li:last-child {
+  border-bottom: none;
+}
+
+.footer {
+  padding: 8px 16px;
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+  background-color: var(--card-bg);
+}
+
+.version {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2a2a2a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #444444;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+}
+
+/* Animation for newly added emails */
+@keyframes highlight {
+  from {
+    background-color: rgba(255, 68, 68, 0.3);
+  }
+  to {
+    background-color: transparent;
+  }
+}
+
+.new-email {
+  animation: highlight 1.5s ease-out;
+}
